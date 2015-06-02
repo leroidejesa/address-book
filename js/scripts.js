@@ -4,6 +4,11 @@ function Contact(firstName, lastName){
   this.addresses = [];
 }
 
+// in order to show a full name instead of first and last separately
+Contact.prototype.fullName = function() {
+  return this.firstName + " " + this.lastName;
+};
+
 $(document).ready(function() {
 
   // in order to have multiple addresses per contact, adds more fields
@@ -30,7 +35,6 @@ $(document).ready(function() {
     var inputtedFirstName = $("input#new-first-name").val();
     var inputtedLastName = $("input#new-last-name").val();
 
-    // var newContact = { firstName: inputtedFirstName, lastName: inputtedLastName, addresses: [] };
     var newContact = new Contact(inputtedFirstName, inputtedLastName);
 
     $(".new-address").each(function() {
@@ -42,7 +46,7 @@ $(document).ready(function() {
       newContact.addresses.push(newAddress);
     });
 
-    $("ul#contacts").append("<li><span class='contact'>" + newContact.firstName + " " + newContact.lastName + "</span></li>");
+    $("ul#contacts").append("<li><span class='contact'>" + newContact.fullName() + "</span></li>");
 
     $(".contact").last().click(function() {
       $("#show-contact").show();
