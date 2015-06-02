@@ -1,3 +1,13 @@
+function Address(street, city, state) {
+  this.street = street;
+  this.city = city;
+  this.state = state;
+}
+
+Address.prototype.fullAddress = function() {
+  return this.street + ", " + this.city + ", " + this.state;
+}
+
 function Contact(firstName, lastName){
   this.firstName = firstName;
   this.lastName = lastName;
@@ -9,8 +19,8 @@ Contact.prototype.fullName = function() {
   return this.firstName + " " + this.lastName;
 };
 
-$(document).ready(function() {
 
+$(document).ready(function() {
   // in order to have multiple addresses per contact, adds more fields
   $("#add-address").click(function() {
   $("#new-addresses").append('<div class="new-address">' +
